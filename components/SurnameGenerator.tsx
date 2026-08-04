@@ -108,20 +108,7 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
       <div className="pointer-events-none absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-fuchsia-500/15 blur-3xl" />
 
       <div className="relative">
-        <div>
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-cyan-300">
-            Name Lab / {categoryData.name}
-          </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Build your surname list
-          </h2>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
-            Generate one idea or scan a larger batch. Save the names that stand
-            out, then copy the complete result set in one click.
-          </p>
-        </div>
-
-        <div className="mt-7 grid gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {generationOptions.map((option) => {
             const isActive = results.length > 0 && lastCount === option.count;
 
@@ -131,9 +118,9 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
                 type="button"
                 onClick={() => generateSurnames(option.count)}
                 aria-pressed={isActive}
-                className={`group rounded-2xl border px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
+                className={`group min-h-[4.5rem] rounded-2xl border px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
                   isActive
-                    ? "border-cyan-200 bg-cyan-300 text-slate-950 shadow-[0_12px_30px_-16px_rgba(103,232,249,0.95)]"
+                    ? "border-indigo-100 bg-indigo-200 text-indigo-950 shadow-[0_12px_30px_-16px_rgba(165,180,252,0.95)]"
                     : "border-white/10 bg-white/[0.07] text-white hover:border-white/25 hover:bg-white/[0.12]"
                 }`}
               >
@@ -148,14 +135,12 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
               </button>
             );
           })}
-        </div>
 
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
           <button
             type="button"
             onClick={regenerate}
             disabled={results.length === 0}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-fuchsia-300/30 bg-fuchsia-400/10 px-5 py-3 font-bold text-fuchsia-100 transition hover:border-fuchsia-200/60 hover:bg-fuchsia-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex min-h-[4.5rem] items-center justify-center gap-2 rounded-2xl border border-rose-300/30 bg-rose-400/10 px-4 py-3 font-bold text-rose-100 transition hover:border-rose-200/60 hover:bg-rose-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-40"
           >
             <svg
               aria-hidden="true"
@@ -175,7 +160,7 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
             type="button"
             onClick={copyList}
             disabled={results.length === 0}
-            className={`inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-40 ${
+            className={`inline-flex min-h-[4.5rem] items-center justify-center gap-2 rounded-2xl px-4 py-3 font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-40 ${
               copyState === "copied"
                 ? "bg-lime-300 text-slate-950 shadow-[0_12px_30px_-16px_rgba(190,242,100,0.95)]"
                 : copyState === "error"
@@ -223,19 +208,19 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
           <p aria-live="polite">{statusMessage}</p>
         </div>
 
-        <div className="mt-6 rounded-3xl border border-white/10 bg-slate-950/35 p-3 backdrop-blur-sm sm:p-4">
+        <div className="mt-6 rounded-3xl border border-indigo-300/45 bg-gradient-to-br from-indigo-500/25 via-indigo-400/15 to-indigo-950/45 p-3 shadow-[0_20px_55px_-30px_rgba(129,140,248,0.9)] backdrop-blur-sm sm:p-4">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2 px-1">
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-slate-400">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-indigo-100">
               Results / {results.length.toString().padStart(2, "0")}
             </p>
-            <p className="rounded-full bg-rose-400/10 px-3 py-1 text-xs font-semibold text-rose-200">
+            <p className="rounded-full border border-rose-200/25 bg-rose-400/20 px-3 py-1 text-xs font-semibold text-rose-100">
               {favorites.length} saved
             </p>
           </div>
 
           {results.length === 0 ? (
-            <div className="flex min-h-40 flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 bg-white/[0.03] px-6 py-10 text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-300/10 text-cyan-200">
+            <div className="flex min-h-40 flex-col items-center justify-center rounded-2xl border border-dashed border-indigo-200/40 bg-indigo-950/30 px-6 py-10 text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-200/15 text-indigo-100">
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 24 24"
@@ -251,7 +236,7 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
               <p className="mt-4 font-semibold text-white">
                 Your name board is ready
               </p>
-              <p className="mt-1 max-w-sm text-sm text-slate-400">
+              <p className="mt-1 max-w-sm text-sm text-indigo-100/70">
                 Pick Generate 1, 10, or 50 to fill this space with unique
                 surnames.
               </p>
@@ -270,12 +255,12 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
                 return (
                   <li
                     key={surname}
-                    className="group flex min-w-0 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] px-3 py-3 transition hover:-translate-y-0.5 hover:border-cyan-200/30 hover:bg-white/[0.1]"
+                    className="group flex min-w-0 items-center gap-3 rounded-2xl border border-indigo-200/80 bg-indigo-50 px-3 py-3 shadow-[0_8px_22px_-16px_rgba(30,27,75,0.65)] transition hover:-translate-y-0.5 hover:border-rose-300 hover:bg-white"
                   >
-                    <span className="font-mono text-[10px] font-bold text-slate-500">
+                    <span className="font-mono text-[10px] font-bold text-indigo-400">
                       {(index + 1).toString().padStart(2, "0")}
                     </span>
-                    <span className="min-w-0 flex-1 truncate text-base font-bold tracking-wide text-white">
+                    <span className="min-w-0 flex-1 truncate text-base font-bold tracking-wide text-indigo-950">
                       {surname}
                     </span>
                     <button
@@ -286,7 +271,7 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
                       className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 ${
                         isFavorite
                           ? "border-rose-300 bg-rose-400 text-white"
-                          : "border-white/10 bg-white/5 text-slate-400 hover:border-rose-300/40 hover:bg-rose-400/10 hover:text-rose-200"
+                          : "border-indigo-200 bg-indigo-100 text-indigo-400 hover:border-rose-300 hover:bg-rose-50 hover:text-rose-500"
                       }`}
                     >
                       <svg
