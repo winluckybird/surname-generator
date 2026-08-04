@@ -47,12 +47,18 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
   const [lastCount, setLastCount] = useState<GenerateCount>(1);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [copyState, setCopyState] = useState<CopyState>("idle");
+  const [favoritesCopyState, setFavoritesCopyState] =
+    useState<CopyState>("idle");
   const [statusMessage, setStatusMessage] = useState(
     "Choose how many surnames you want to explore.",
   );
+  const hasCopySuccess =
+    copyState === "copied" || favoritesCopyState === "copied";
+  const hasCopyError = copyState === "error" || favoritesCopyState === "error";
 
   function generateSurnames(count: GenerateCount) {
     setCopyState("idle");
+    setFavoritesCopyState("idle");
 
     if (surnames.length === 0) {
       setStatusMessage("No surnames are available for this category yet.");
@@ -75,6 +81,7 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
     if (results.length === 0) return;
 
     try {
+      setFavoritesCopyState("idle");
       await navigator.clipboard.writeText(results.join("\n"));
       setCopyState("copied");
       setStatusMessage(
@@ -86,9 +93,33 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
     }
   }
 
+  async function copyFavorites() {
+    if (favorites.length === 0) return;
+
+    try {
+      setCopyState("idle");
+      await navigator.clipboard.writeText(favorites.join("\n"));
+      setFavoritesCopyState("copied");
+      setStatusMessage(
+        `${favorites.length} favorite ${favorites.length === 1 ? "surname" : "surnames"} copied to your clipboard.`,
+      );
+    } catch {
+      setFavoritesCopyState("error");
+      setStatusMessage("Favorites copy failed. Please try again.");
+    }
+  }
+
+  function clearFavorites() {
+    setFavorites([]);
+    setCopyState("idle");
+    setFavoritesCopyState("idle");
+    setStatusMessage("All favorites cleared.");
+  }
+
   function toggleFavorite(surname: string) {
     const isFavorite = favorites.includes(surname);
     setCopyState("idle");
+    setFavoritesCopyState("idle");
 
     setFavorites((currentFavorites) =>
       isFavorite
@@ -189,18 +220,18 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
 
         <div
           className={`mt-3 flex items-center gap-2 rounded-2xl border px-4 py-3 text-sm ${
-            copyState === "copied"
+            hasCopySuccess
               ? "border-lime-300/30 bg-lime-300/10 text-lime-100"
-              : copyState === "error"
+              : hasCopyError
                 ? "border-rose-300/30 bg-rose-400/10 text-rose-100"
                 : "border-white/10 bg-white/[0.05] text-slate-300"
           }`}
         >
           <span
             className={`h-2 w-2 shrink-0 rounded-full ${
-              copyState === "copied"
+              hasCopySuccess
                 ? "bg-lime-300"
-                : copyState === "error"
+                : hasCopyError
                   ? "bg-rose-300"
                   : "bg-cyan-300"
             }`}
@@ -293,19 +324,71 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
         </div>
 
         {favorites.length > 0 ? (
-          <div className="mt-4 rounded-3xl border border-rose-300/20 bg-rose-400/[0.07] p-4">
+          <div className="mt-4 rounded-3xl border border-rose-200 bg-rose-50 p-4 text-rose-950 shadow-[0_18px_45px_-28px_rgba(225,29,72,0.75)]">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-rose-200">
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-rose-900">
                   Favorites shelf
                 </p>
-                <p className="mt-1 text-sm text-slate-400">
+                <p className="mt-1 text-sm text-rose-700">
                   Your saved ideas remain here while you explore new batches.
                 </p>
               </div>
-              <span className="rounded-full border border-rose-300/20 bg-rose-300/10 px-3 py-1 text-xs font-semibold text-rose-100">
-                {favorites.length} kept
+              <span className="rounded-full bg-rose-600 px-3 py-1 text-xs font-semibold text-white">
+                {favorites.length} saved
               </span>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={copyFavorites}
+                className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-50 ${
+                  favoritesCopyState === "copied"
+                    ? "border-lime-400 bg-lime-300 text-slate-950"
+                    : favoritesCopyState === "error"
+                      ? "border-rose-800 bg-rose-800 text-white"
+                      : "border-rose-500 bg-rose-500 text-white hover:border-rose-600 hover:bg-rose-600"
+                }`}
+              >
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <rect x="8" y="8" width="11" height="11" rx="2" />
+                  <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+                </svg>
+                {favoritesCopyState === "copied"
+                  ? `Copied ${favorites.length}`
+                  : favoritesCopyState === "error"
+                    ? "Copy failed"
+                    : "Copy favorites"}
+              </button>
+
+              <button
+                type="button"
+                onClick={clearFavorites}
+                className="inline-flex items-center gap-2 rounded-xl border border-rose-300 bg-white px-4 py-2 text-sm font-bold text-rose-800 transition hover:border-rose-400 hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-50"
+              >
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M8 6V4h8v2" />
+                  <path d="m19 6-1 14H6L5 6" />
+                  <path d="M10 11v5M14 11v5" />
+                </svg>
+                Clear all
+              </button>
             </div>
 
             <div className="mt-3 flex flex-wrap gap-2">
@@ -315,10 +398,10 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
                   type="button"
                   onClick={() => toggleFavorite(surname)}
                   aria-label={`Remove ${surname} from saved favorites`}
-                  className="inline-flex items-center gap-2 rounded-full border border-rose-300/20 bg-slate-950/35 px-3 py-2 text-sm font-semibold text-rose-50 transition hover:border-rose-200/50 hover:bg-rose-400/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-300"
+                  className="inline-flex items-center gap-2 rounded-full border border-rose-300 bg-white px-3 py-2 text-sm font-semibold text-rose-900 transition hover:border-rose-400 hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
                 >
                   {surname}
-                  <span aria-hidden="true" className="text-rose-300">
+                  <span aria-hidden="true" className="text-rose-500">
                     x
                   </span>
                 </button>
