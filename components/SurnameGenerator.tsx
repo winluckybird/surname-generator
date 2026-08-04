@@ -1,15 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { americanSurnames } from "@/data/surnames";
+import { surnameCategories } from "@/data/surnames";
 
-export function SurnameGenerator() {
+type SurnameGeneratorProps = {
+  category: keyof typeof surnameCategories;
+};
+
+export function SurnameGenerator({
+  category,
+}: SurnameGeneratorProps) {
+  const surnames = surnameCategories[category].surnames;
   const [surname, setSurname] = useState<string | null>(null);
   const [copyMessage, setCopyMessage] = useState("");
 
   function generateSurname() {
-    const randomIndex = Math.floor(Math.random() * americanSurnames.length);
-    setSurname(americanSurnames[randomIndex]);
+    if (surnames.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * surnames.length);
+    setSurname(surnames[randomIndex]);
     setCopyMessage("");
   }
 
