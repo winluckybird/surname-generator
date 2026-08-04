@@ -9,6 +9,7 @@ type SurnameGeneratorProps = {
 };
 
 type GenerateCount = 1 | 10 | 50;
+type CopyState = "idle" | "copied" | "error";
 
 const generationOptions: Array<{
   count: GenerateCount;
@@ -45,11 +46,14 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
   const [results, setResults] = useState<string[]>([]);
   const [lastCount, setLastCount] = useState<GenerateCount>(1);
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [copyState, setCopyState] = useState<CopyState>("idle");
   const [statusMessage, setStatusMessage] = useState(
     "Choose how many surnames you want to explore.",
   );
 
   function generateSurnames(count: GenerateCount) {
+    setCopyState("idle");
+
     if (surnames.length === 0) {
       setStatusMessage("No surnames are available for this category yet.");
       return;
@@ -72,16 +76,19 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
 
     try {
       await navigator.clipboard.writeText(results.join("\n"));
+      setCopyState("copied");
       setStatusMessage(
         `${results.length} ${results.length === 1 ? "surname" : "surnames"} copied to your clipboard.`,
       );
     } catch {
+      setCopyState("error");
       setStatusMessage("Copy failed. Please try again.");
     }
   }
 
   function toggleFavorite(surname: string) {
     const isFavorite = favorites.includes(surname);
+    setCopyState("idle");
 
     setFavorites((currentFavorites) =>
       isFavorite
@@ -101,24 +108,17 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
       <div className="pointer-events-none absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-fuchsia-500/15 blur-3xl" />
 
       <div className="relative">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-cyan-300">
-              Name Lab / {categoryData.name}
-            </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-              Build your surname list
-            </h2>
-            <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
-              Generate one idea or scan a larger batch. Save the names that
-              stand out, then copy the complete result set in one click.
-            </p>
-          </div>
-
-          <div className="flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-200 backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-lime-300 shadow-[0_0_12px_rgba(190,242,100,0.9)]" />
-            {surnames.length.toLocaleString("en-US")} names loaded
-          </div>
+        <div>
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-cyan-300">
+            Name Lab / {categoryData.name}
+          </p>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            Build your surname list
+          </h2>
+          <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
+            Generate one idea or scan a larger batch. Save the names that stand
+            out, then copy the complete result set in one click.
+          </p>
         </div>
 
         <div className="mt-7 grid gap-3 sm:grid-cols-3">
@@ -175,7 +175,13 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
             type="button"
             onClick={copyList}
             disabled={results.length === 0}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 font-bold text-slate-950 transition hover:bg-lime-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-40"
+            className={`inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-40 ${
+              copyState === "copied"
+                ? "bg-lime-300 text-slate-950 shadow-[0_12px_30px_-16px_rgba(190,242,100,0.95)]"
+                : copyState === "error"
+                  ? "bg-rose-400 text-white"
+                  : "bg-white text-slate-950 hover:bg-lime-200"
+            }`}
           >
             <svg
               aria-hidden="true"
@@ -188,8 +194,33 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
               <rect x="8" y="8" width="11" height="11" rx="2" />
               <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
             </svg>
-            Copy list
+            {copyState === "copied"
+              ? `Copied ${results.length}`
+              : copyState === "error"
+                ? "Copy failed"
+                : "Copy list"}
           </button>
+        </div>
+
+        <div
+          className={`mt-3 flex items-center gap-2 rounded-2xl border px-4 py-3 text-sm ${
+            copyState === "copied"
+              ? "border-lime-300/30 bg-lime-300/10 text-lime-100"
+              : copyState === "error"
+                ? "border-rose-300/30 bg-rose-400/10 text-rose-100"
+                : "border-white/10 bg-white/[0.05] text-slate-300"
+          }`}
+        >
+          <span
+            className={`h-2 w-2 shrink-0 rounded-full ${
+              copyState === "copied"
+                ? "bg-lime-300"
+                : copyState === "error"
+                  ? "bg-rose-300"
+                  : "bg-cyan-300"
+            }`}
+          />
+          <p aria-live="polite">{statusMessage}</p>
         </div>
 
         <div className="mt-6 rounded-3xl border border-white/10 bg-slate-950/35 p-3 backdrop-blur-sm sm:p-4">
@@ -303,7 +334,7 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
                 >
                   {surname}
                   <span aria-hidden="true" className="text-rose-300">
-                    ×
+                    x
                   </span>
                 </button>
               ))}
@@ -311,10 +342,9 @@ export function SurnameGenerator({ category }: SurnameGeneratorProps) {
           </div>
         ) : null}
 
-        <div className="mt-4 flex flex-col gap-2 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-          <p aria-live="polite">{statusMessage}</p>
-          <p>Heart a surname to build your favorites.</p>
-        </div>
+        <p className="mt-4 text-xs text-slate-400">
+          Heart a surname to build your favorites.
+        </p>
       </div>
     </section>
   );
