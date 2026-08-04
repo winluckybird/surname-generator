@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-16 text-slate-900">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-5xl">
         <div className="text-center">
           <p className="mb-3 font-semibold text-blue-600">
             Find the perfect last name

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function AmericanSurnamesPage() {
   return (
     <main className="bg-slate-50 px-6 py-12 text-slate-900">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-5xl">
         <nav className="mb-8 text-sm text-slate-500" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-blue-600">
             Home
@@ -40,7 +40,7 @@ export default function AmericanSurnamesPage() {
           <SurnameGenerator category="american" />
         </div>
 
-        <article className="mt-12 space-y-8 rounded-2xl bg-white p-8 shadow-sm">
+        <article className="mx-auto mt-12 max-w-3xl space-y-8 rounded-2xl bg-white p-8 shadow-sm">
           <section>
   <h2 className="text-2xl font-bold">
     Frequently asked questions
