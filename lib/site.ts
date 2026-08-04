@@ -7,4 +7,5 @@ export const siteConfig = {
   description:
     "Generate random surnames and explore last names from different countries and cultures.",
   url: siteUrl,
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
 };

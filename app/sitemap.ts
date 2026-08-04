@@ -12,6 +12,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const supportingPages: MetadataRoute.Sitemap = [
+    "about",
+    "contact",
+    "privacy",
+    "terms",
+  ].map((page) => ({
+    url: `${siteConfig.url}/${page}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly",
+    priority: 0.3,
+  }));
+
   return [
     {
       url: siteConfig.url,
@@ -20,5 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...categoryPages,
+    ...supportingPages,
   ];
 }
