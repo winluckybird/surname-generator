@@ -1,3 +1,5 @@
+import { SurnameGenerator } from "@/components/SurnameGenerator";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-16 text-slate-900">
@@ -15,18 +17,7 @@ export default function Home() {
           countries and cultures.
         </p>
 
-        <section className="mt-10 rounded-2xl bg-white p-8 shadow-sm">
-          <p className="text-xl font-semibold text-slate-500">
-            Your surname will appear here
-          </p>
-
-          <button
-            type="button"
-            className="mt-6 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white"
-          >
-            Generate a Surname
-          </button>
-        </section>
+        <SurnameGenerator />
       </div>
     </main>
   );
