@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "American Surname Generator | Random US Last Names",
   description:
     "Generate random American surnames from a list of 1,000 common last names recorded in the 2020 United States Census.",
+  alternates: {
+    canonical: "/american-surnames",
+  },
 };
 
 export default function AmericanSurnamesPage() {
