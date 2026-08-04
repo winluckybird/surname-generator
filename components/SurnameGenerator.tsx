@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { surnameCategories } from "@/data/surnames";
+import { formatSurname } from "@/lib/format-surname";
 
 type SurnameGeneratorProps = {
   category: keyof typeof surnameCategories;
@@ -14,13 +15,22 @@ export function SurnameGenerator({
   const [surname, setSurname] = useState<string | null>(null);
   const [copyMessage, setCopyMessage] = useState("");
 
-  function generateSurname() {
-    if (surnames.length === 0) return;
+ function generateSurname() {
+  if (surnames.length === 0) return;
 
-    const randomIndex = Math.floor(Math.random() * surnames.length);
-    setSurname(surnames[randomIndex]);
-    setCopyMessage("");
+  let nextSurname = formatSurname(
+    surnames[Math.floor(Math.random() * surnames.length)],
+  );
+
+  while (nextSurname === surname && surnames.length > 1) {
+    nextSurname = formatSurname(
+      surnames[Math.floor(Math.random() * surnames.length)],
+    );
   }
+
+  setSurname(nextSurname);
+  setCopyMessage("");
+}
 
   async function copySurname() {
     if (!surname) return;
@@ -48,7 +58,7 @@ export function SurnameGenerator({
           onClick={generateSurname}
           className="rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
         >
-          Generate a Surname
+          {surname ? "Generate Another" : "Generate a Surname"}
         </button>
 
         <button
