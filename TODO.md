@@ -1,6 +1,6 @@
 # Project TODO
 
-Last reviewed: August 6, 2026
+Last reviewed: August 7, 2026
 
 This file reflects the current repository state. Completed items are confirmed
 by the existing code. Unchecked items describe known gaps or next actions based
@@ -12,6 +12,8 @@ already started.
 - [x] Create the project with Next.js 16 App Router, React 19, TypeScript strict
   mode, Tailwind CSS 4, and ESLint.
 - [x] Add a shared site layout with a global header and footer.
+- [x] Link the American and Scottish category pages from the responsive global
+  header navigation.
 - [x] Build the homepage at `/` with the primary surname generator and an
   internal link to the current category page.
 - [x] Add the American surname SEO page at `/american-surnames`.
@@ -25,6 +27,8 @@ already started.
 - [x] Add surname display formatting for spaces, apostrophes, hyphens, and `Mc`
   names.
 - [x] Support random batches of 1, 10, and 50 surnames.
+- [x] Update the American surname FAQ to describe batches of 1, 10, or 50
+  surnames and the current repeat-avoidance behavior.
 - [x] Support regeneration using the previously selected batch size.
 - [x] Avoid immediate reuse of the previous result batch when enough unused
   names remain.
@@ -57,9 +61,6 @@ There is also no database or migration work in progress.
 
 ## Next Steps
 
-- [ ] Update the American surname FAQ so its explanation reflects the current
-  ability to generate 1, 10, or 50 surnames instead of describing only a
-  single-result click.
 - [ ] Break up `components/SurnameGenerator.tsx` before adding another large
   feature. Separate the selection logic, generator controls, results, and
   favorites into testable responsibilities.

@@ -89,7 +89,7 @@ Search 不使用该标签进行索引或排名。
 | 页面 | 当前 SEO 状态 | 已完成 | 主要缺口 |
 | --- | --- | --- | --- |
 | `/` | 基础完成 | 默认 title、description、canonical、H1、American 与 Scottish 分类内链 | 内容深度有限；没有 Schema |
-| `/american-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、可见静态内容 | FAQ 仍写成每次只生成一个 surname，与 1/10/50 批量功能不一致；内容深度有限；没有 Schema |
+| `/american-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、可见静态内容 | 内容深度有限；没有 Schema |
 | `/scottish-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、可见静态内容 | 内容深度有限；没有 Schema |
 | `/about` | 完成 | 独立 metadata、canonical、一个 H1、多个语义 section | 不需要主动扩展非品牌关键词 |
 | `/contact` | 完成但依赖环境变量 | 独立 metadata、canonical、联系信息区 | 正式邮箱尚未配置时会显示占位提示 |
@@ -307,7 +307,7 @@ American description 准确且包含明确数据范围。首页 description 在�
 
 ### 当前内链
 
-- Header：品牌链接到首页，导航链接到 American 页面。
+- Header：品牌链接到首页，导航链接到 American 和 Scottish 页面。
 - 首页：分类卡片链接到 `/american-surnames` 和 `/scottish-surnames`。
 - American 页面：breadcrumb 链接回首页。
 - Scottish 页面：breadcrumb 链接回首页。
@@ -338,7 +338,7 @@ American description 准确且包含明确数据范围。首页 description 在�
 
 ### Phase 1：修正现有内容
 
-- 将 American FAQ 中“每次点击选择一个姓氏”的说明更新为支持 1、10 和 50 个结果。
+- [x] American FAQ 已更新为说明支持 1、10 和 50 个结果，并与当前选择逻辑一致。
 - 继续确保首页对多个国家和文化分类的描述与实际可用分类保持一致。
 - 确保所有关于数量、年份和来源的陈述与实际 JSON 和来源文件一致。
 - 不为追求所谓 freshness 只修改日期；只有实际改进内容时才更新日期或 sitemap

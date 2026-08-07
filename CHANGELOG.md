@@ -4,6 +4,20 @@ This file records notable project changes. Entries must describe changes that
 actually exist in the repository and must not claim backend, database, SEO, or
 application work that was not performed.
 
+## 2026-08-07
+
+### Changed
+
+- Updated the American surname FAQ to describe batches of 1, 10, or 50 and the
+  generator's current repeat-avoidance behavior.
+- Added American and Scottish category links to the shared header, with a
+  wrapping mobile layout for narrow screens.
+
+### Fixed
+
+- Added the missing homepage link to the Scottish surname generator so both
+  current categories are discoverable through crawlable internal navigation.
+
 ## 2026-08-06
 
 ### Added

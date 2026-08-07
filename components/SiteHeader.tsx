@@ -3,17 +3,27 @@ import Link from "next/link";
 export function SiteHeader() {
   return (
     <header className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
+      <div className="mx-auto flex max-w-5xl flex-col items-start gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
         <Link href="/" className="text-lg font-bold text-slate-900">
           Surname Generator
         </Link>
 
-        <nav aria-label="Main navigation">
+        <nav
+          aria-label="Main navigation"
+          className="flex flex-wrap gap-x-4 gap-y-2"
+        >
           <Link
             href="/american-surnames"
             className="text-sm font-semibold text-slate-600 hover:text-blue-600"
           >
             American Surnames
+          </Link>
+
+          <Link
+            href="/scottish-surnames"
+            className="text-sm font-semibold text-slate-600 hover:text-blue-600"
+          >
+            Scottish Surnames
           </Link>
         </nav>
       </div>

@@ -62,8 +62,9 @@ export default function AmericanSurnamesPage() {
         How does the generator choose a surname?
       </h3>
       <p className="mt-2 leading-7 text-slate-600">
-        Each click randomly selects one surname from the current list. Every
-        surname in the generator has an equal chance of appearing.
+        Choose 1, 10, or 50 surnames at a time. Results are selected randomly
+        without duplicates within a batch, and the generator avoids immediately
+        repeating the previous batch when enough unused names are available.
       </p>
     </div>
 

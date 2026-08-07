@@ -41,7 +41,7 @@ export default function Home() {
             Browse surname generators
           </h2>
 
-          <div className="mt-8">
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
             <Link
               href="/american-surnames"
               className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-blue-300 hover:shadow-md"
@@ -52,6 +52,19 @@ export default function Home() {
               <p className="mt-2 text-slate-600">
                 Explore 1,000 common last names recorded in the 2020 United
                 States Census.
+              </p>
+            </Link>
+
+            <Link
+              href="/scottish-surnames"
+              className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-blue-300 hover:shadow-md"
+            >
+              <h3 className="text-xl font-bold text-slate-900">
+                Scottish Surname Generator
+              </h3>
+              <p className="mt-2 text-slate-600">
+                Explore 3,672 surnames recorded in Scotland between 1975 and
+                2025.
               </p>
             </Link>
           </div>
