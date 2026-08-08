@@ -41,7 +41,7 @@ export default function Home() {
             Browse surname generators
           </h2>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Link
               href="/american-surnames"
               className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-blue-300 hover:shadow-md"
@@ -65,6 +65,19 @@ export default function Home() {
               <p className="mt-2 text-slate-600">
                 Explore 3,672 surnames recorded in Scotland between 1975 and
                 2025.
+              </p>
+            </Link>
+
+            <Link
+              href="/japanese-surnames"
+              className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-blue-300 hover:shadow-md"
+            >
+              <h3 className="text-xl font-bold text-slate-900">
+                Japanese Surname Generator
+              </h3>
+              <p className="mt-2 text-slate-600">
+                Explore 1,999 Japanese surnames shown in romanized spelling,
+                kana, and kanji.
               </p>
             </Link>
           </div>

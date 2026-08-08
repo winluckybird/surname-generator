@@ -4,6 +4,25 @@ This file records notable project changes. Entries must describe changes that
 actually exist in the repository and must not claim backend, database, SEO, or
 application work that was not performed.
 
+## 2026-08-08
+
+### Added
+
+- Added 1,999 unique Japanese surname entries pairing romanized spellings with
+  kana and kanji, together with the source CSV and a provenance note.
+- Added the `/japanese-surnames` generator and SEO page with unique metadata,
+  visible supporting content, a breadcrumb, homepage discovery, and automatic
+  sitemap inclusion through the category registry.
+
+### Changed
+
+- Added Japanese surnames to the shared responsive header and expanded the
+  homepage category grid for three generators.
+- Documented shuheilocale's Japanese Personal Name Dataset as the source,
+  and preserved its MIT copyright and permission notice. The estimated count
+  column is not presented as official or current population data because its
+  reference date and method are unspecified.
+
 ## 2026-08-07
 
 ### Changed

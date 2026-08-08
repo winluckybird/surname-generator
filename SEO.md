@@ -1,6 +1,6 @@
 # Google SEO Strategy
 
-Last reviewed: August 6, 2026
+Last reviewed: August 8, 2026
 
 本文件用于指导开发者和 AI Agent 持续优化 Surname Generator 的 Google
 SEO。内容同时记录当前代码状态和未来执行规则。SEO 不能保证排名或收录；所有
@@ -54,6 +54,22 @@ position 数据调整优先级。
 | Secondary | `surnames recorded in Scotland` |
 | Secondary | `Scottish surnames for characters` |
 
+### Japanese 页面 `/japanese-surnames`
+
+主要搜索意图：寻找带罗马字拼写、假名和汉字的日本姓氏生成工具。
+
+| 类型 | 目标关键词 |
+| --- | --- |
+| Primary | `Japanese surname generator` |
+| Primary variant | `Japanese last name generator` |
+| Primary variant | `random Japanese last names` |
+| Secondary | `Japanese surnames with kanji` |
+| Secondary | `Japanese surnames with kana` |
+| Secondary | `Japanese surnames for characters` |
+
+当前 MIT 许可的数据源没有说明估算人数的统计日期或采集方法，因此不定位
+`official Japanese surname ranking`、`current surname population` 等无法支持的意图。
+
 ### Trust 和 policy 页面
 
 `/about`、`/contact`、`/privacy` 和 `/terms` 的主要作用是品牌、可信度和
@@ -88,9 +104,10 @@ Search 不使用该标签进行索引或排名。
 
 | 页面 | 当前 SEO 状态 | 已完成 | 主要缺口 |
 | --- | --- | --- | --- |
-| `/` | 基础完成 | 默认 title、description、canonical、H1、American 与 Scottish 分类内链 | 内容深度有限；没有 Schema |
+| `/` | 基础完成 | 默认 title、description、canonical、H1、American、Scottish 与 Japanese 分类内链 | 内容深度有限；没有 Schema |
 | `/american-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、可见静态内容 | 内容深度有限；没有 Schema |
 | `/scottish-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、可见静态内容 | 内容深度有限；没有 Schema |
+| `/japanese-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、数据来源与限制说明、可见静态内容 | 没有 Schema |
 | `/about` | 完成 | 独立 metadata、canonical、一个 H1、多个语义 section | 不需要主动扩展非品牌关键词 |
 | `/contact` | 完成但依赖环境变量 | 独立 metadata、canonical、联系信息区 | 正式邮箱尚未配置时会显示占位提示 |
 | `/privacy` | 当前产品状态下完成 | 独立 metadata、canonical、Cookie/analytics 说明 | 添加 analytics、ads 或 tracking 前必须更新 |
@@ -103,7 +120,7 @@ Search 不使用该标签进行索引或排名。
 - 根布局设置 `lang="en"`。
 - `metadataBase` 来自 `siteConfig.url`。
 - 首页和所有公开内容页面都有 canonical。
-- American、Scottish 和 supporting pages 有独立 title 与 description。
+- American、Scottish、Japanese 和 supporting pages 有独立 title 与 description。
 - `/robots.txt` 允许公开抓取并声明 sitemap。
 - `/sitemap.xml` 包含首页、分类页和 supporting pages。
 - Header、主页分类卡片、breadcrumb 和 footer 提供可抓取内部链接。
@@ -132,6 +149,8 @@ Search 不使用该标签进行索引或排名。
 ```text
 /
 /american-surnames
+/japanese-surnames
+/scottish-surnames
 /about
 /contact
 /privacy
@@ -307,10 +326,12 @@ American description 准确且包含明确数据范围。首页 description 在�
 
 ### 当前内链
 
-- Header：品牌链接到首页，导航链接到 American 和 Scottish 页面。
-- 首页：分类卡片链接到 `/american-surnames` 和 `/scottish-surnames`。
+- Header：品牌链接到首页，导航链接到 American、Scottish 和 Japanese 页面。
+- 首页：分类卡片链接到 `/american-surnames`、`/scottish-surnames` 和
+  `/japanese-surnames`。
 - American 页面：breadcrumb 链接回首页。
 - Scottish 页面：breadcrumb 链接回首页。
+- Japanese 页面：breadcrumb 链接回首页。
 - Footer：链接到 About、Contact、Privacy 和 Terms。
 - 404：链接回首页。
 

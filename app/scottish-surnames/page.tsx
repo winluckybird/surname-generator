@@ -40,7 +40,7 @@ export default function ScottishSurnamesPage() {
           <SurnameGenerator category="scottish" />
         </div>
 
-        <article className="mx-auto mt-12 max-w-3xl space-y-8 rounded-2xl bg-white p-8 shadow-sm">
+        <article className="mx-auto mt-12 max-w-5xl space-y-8 rounded-2xl bg-white p-8 shadow-sm">
           <section>
             <h2 className="text-2xl font-bold">
               About surnames recorded in Scotland

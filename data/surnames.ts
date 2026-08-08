@@ -1,4 +1,5 @@
 import americanSurnames from "./american-surnames.json";
+import japaneseSurnames from "./japanese-surnames.json";
 import scottishSurnames from "./scottish-surnames.json";
 
 export const surnameCategories = {
@@ -7,6 +8,13 @@ export const surnameCategories = {
     slug: "american-surnames",
     description: "Frequently occurring surnames in the United States.",
     surnames: americanSurnames,
+  },
+  japanese: {
+    name: "Japanese",
+    slug: "japanese-surnames",
+    description:
+      "Romanized Japanese surname spellings paired with kana and kanji.",
+    surnames: japaneseSurnames,
   },
   scottish: {
     name: "Scottish",

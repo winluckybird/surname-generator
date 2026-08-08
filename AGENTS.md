@@ -89,6 +89,7 @@ app/
   layout.tsx                 Root layout, global metadata, header, and footer
   page.tsx                   Homepage and primary generator entry point
   american-surnames/         American category SEO page
+  japanese-surnames/         Japanese category SEO page
   scottish-surnames/         Scottish category SEO page
   about/ contact/            Trust and contact pages
   privacy/ terms/            Policy pages
@@ -100,6 +101,7 @@ components/
   SiteFooter.tsx             Global footer and trust-page links
 data/
   american-surnames.json     Current 1,000-name production dataset
+  japanese-surnames.json     Current 1,999-entry production dataset
   scottish-surnames.json     Current 3,672-name production dataset
   surnames.ts                Category registry and route metadata
   sources/                   Original source spreadsheets
@@ -121,6 +123,11 @@ Never edit generated files in `.next/` or dependencies in `node_modules/`.
   generation also reads this registry.
 - `data/american-surnames.json` contains exactly 1,000 unique, nonblank surname
   strings from the current source file.
+- `data/japanese-surnames.json` contains exactly 1,999 unique, nonblank values
+  pairing a Hepburn-style romanized Japanese surname spelling with kana and
+  kanji. It is derived from shuheilocale's MIT-licensed Japanese Personal Name
+  Dataset. The source does not identify a reference date or collection method
+  for estimated counts; do not describe those counts as official or current.
 - `data/scottish-surnames.json` contains 3,672 unique, nonblank surname strings
   recorded in Scotland from 1975 to 2025.
 - `lib/format-surname.ts` converts stored uppercase values into display casing,

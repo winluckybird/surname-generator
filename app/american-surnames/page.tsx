@@ -40,46 +40,48 @@ export default function AmericanSurnamesPage() {
           <SurnameGenerator category="american" />
         </div>
 
-        <article className="mx-auto mt-12 max-w-3xl space-y-8 rounded-2xl bg-white p-8 shadow-sm">
+        <article className="mx-auto mt-12 max-w-5xl space-y-8 rounded-2xl bg-white p-8 shadow-sm">
           <section>
-  <h2 className="text-2xl font-bold">
-    Frequently asked questions
-  </h2>
+            <h2 className="text-2xl font-bold">
+              Frequently asked questions
+            </h2>
 
-  <div className="mt-5 space-y-6">
-    <div>
-      <h3 className="text-lg font-bold">
-        What is an American surname?
-      </h3>
-      <p className="mt-2 leading-7 text-slate-600">
-        An American surname is a last name used in the United States. American
-        surnames can come from many languages, cultures, and family histories.
-      </p>
-    </div>
+            <div className="mt-5 space-y-6">
+              <div>
+                <h3 className="text-lg font-bold">
+                  What is an American surname?
+                </h3>
+                <p className="mt-2 leading-7 text-slate-600">
+                  An American surname is a last name used in the United States.
+                  American surnames can come from many languages, cultures, and
+                  family histories.
+                </p>
+              </div>
 
-    <div>
-      <h3 className="text-lg font-bold">
-        How does the generator choose a surname?
-      </h3>
-      <p className="mt-2 leading-7 text-slate-600">
-        Choose 1, 10, or 50 surnames at a time. Results are selected randomly
-        without duplicates within a batch, and the generator avoids immediately
-        repeating the previous batch when enough unused names are available.
-      </p>
-    </div>
+              <div>
+                <h3 className="text-lg font-bold">
+                  How does the generator choose a surname?
+                </h3>
+                <p className="mt-2 leading-7 text-slate-600">
+                  Choose 1, 10, or 50 surnames at a time. Results are selected
+                  randomly without duplicates within a batch, and the generator
+                  avoids immediately repeating the previous batch when enough
+                  unused names are available.
+                </p>
+              </div>
 
-    <div>
-      <h3 className="text-lg font-bold">
-        Can I use these surnames for fictional characters?
-      </h3>
-      <p className="mt-2 leading-7 text-slate-600">
-        You can use the results as inspiration for stories, games, and character
-        ideas. A generated surname does not confirm a person&apos;s identity or
-        cultural background.
-      </p>
-    </div>
-  </div>
-</section>
+              <div>
+                <h3 className="text-lg font-bold">
+                  Can I use these surnames for fictional characters?
+                </h3>
+                <p className="mt-2 leading-7 text-slate-600">
+                  You can use the results as inspiration for stories, games, and
+                  character ideas. A generated surname does not confirm a
+                  person&apos;s identity or cultural background.
+                </p>
+              </div>
+            </div>
+          </section>
         </article>
       </div>
     </main>

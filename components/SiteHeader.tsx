@@ -16,14 +16,21 @@ export function SiteHeader() {
             href="/american-surnames"
             className="text-sm font-semibold text-slate-600 hover:text-blue-600"
           >
-            American Surnames
+            American
           </Link>
 
           <Link
             href="/scottish-surnames"
             className="text-sm font-semibold text-slate-600 hover:text-blue-600"
           >
-            Scottish Surnames
+            Scottish
+          </Link>
+
+          <Link
+            href="/japanese-surnames"
+            className="text-sm font-semibold text-slate-600 hover:text-blue-600"
+          >
+            Japanese
           </Link>
         </nav>
       </div>
