@@ -89,6 +89,7 @@ app/
   layout.tsx                 Root layout, global metadata, header, and footer
   page.tsx                   Homepage and primary generator entry point
   american-surnames/         American category SEO page
+  australian-surnames/       Australian category SEO page
   japanese-surnames/         Japanese category SEO page
   scottish-surnames/         Scottish category SEO page
   about/ contact/            Trust and contact pages
@@ -101,6 +102,7 @@ components/
   SiteFooter.tsx             Global footer and trust-page links
 data/
   american-surnames.json     Current 1,000-name production dataset
+  australian-surnames.json   Current 4,991-name production dataset
   japanese-surnames.json     Current 1,999-entry production dataset
   scottish-surnames.json     Current 3,672-name production dataset
   surnames.ts                Category registry and route metadata
@@ -123,6 +125,10 @@ Never edit generated files in `.next/` or dependencies in `node_modules/`.
   generation also reads this registry.
 - `data/american-surnames.json` contains exactly 1,000 unique, nonblank surname
   strings from the current source file.
+- `data/australian-surnames.json` contains exactly 4,991 unique, nonblank
+  English family-name labels from a CC0 Wikidata snapshot of people recorded
+  with Australian citizenship and a structured family name. It is not a
+  population register or frequency ranking.
 - `data/japanese-surnames.json` contains exactly 1,999 unique, nonblank values
   pairing a Hepburn-style romanized Japanese surname spelling with kana and
   kanji. It is derived from shuheilocale's MIT-licensed Japanese Personal Name

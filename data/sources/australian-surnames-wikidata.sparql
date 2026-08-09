@@ -1,0 +1,9 @@
+SELECT DISTINCT ?familyName ?familyNameLabel
+WHERE {
+  ?person wdt:P27 wd:Q408;
+    wdt:P734 ?familyName.
+
+  ?familyName rdfs:label ?familyNameLabel.
+  FILTER(LANG(?familyNameLabel) = "en")
+}
+LIMIT 5000

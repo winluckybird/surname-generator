@@ -1,15 +1,16 @@
 # Surname Generator
 
-一个面向英语用户的随机姓氏生成器网站。当前版本提供美国、苏格兰和日本姓氏生成器，目标是逐步扩展到更多国家和文化分类，并为每个分类建立可被搜索引擎收录的独立页面。
+一个面向英语用户的随机姓氏生成器网站。当前版本提供美国、澳大利亚、苏格兰和日本姓氏生成器，目标是逐步扩展到更多国家和文化分类，并为每个分类建立可被搜索引擎收录的独立页面。
 
 网站主要服务于作家、游戏玩家、角色创作者以及需要姓氏灵感的用户。分类标签用于组织数据，不代表某个姓氏可以证明真实人物的国籍、族裔、血统或家族历史。
 
 ## 当前状态
 
 - 已完成可运行的多分类 MVP。
-- 当前数据包含 1,000 个唯一、非空的美国常见姓氏，3,672 个
-  1975–2025 年间记录在苏格兰的唯一、非空姓氏，以及 1,999 个由罗马字、
-  假名与汉字组成的唯一日本姓氏条目。
+- 当前数据包含 1,000 个唯一、非空的美国常见姓氏，4,991 个与 Wikidata
+  中澳大利亚公民记录相关的唯一、非空姓氏，3,672 个 1975–2025 年间记录在
+  苏格兰的唯一、非空姓氏，以及 1,999 个由罗马字、假名与汉字组成的唯一
+  日本姓氏条目。
 - 所有公开页面均可由 Next.js 静态预渲染。
 - 当前没有后端、数据库、账户系统、分析工具或广告代码。
 - 生成结果只保存在浏览器内存中；收藏按分类保存在浏览器
@@ -36,6 +37,7 @@
 
 - 首页：`/`
 - 美国姓氏独立页面：`/american-surnames`
+- 澳大利亚姓氏独立页面：`/australian-surnames`
 - 苏格兰姓氏独立页面：`/scottish-surnames`
 - 日本姓氏独立页面：`/japanese-surnames`
 - About：`/about`
@@ -73,6 +75,7 @@ app/
 ├─ layout.tsx                  # 全站布局、默认 Metadata、Header 和 Footer
 ├─ page.tsx                    # 首页和主生成器入口
 ├─ american-surnames/page.tsx  # 美国姓氏 SEO 页面
+├─ australian-surnames/page.tsx # 澳大利亚姓氏 SEO 页面
 ├─ japanese-surnames/page.tsx  # 日本姓氏 SEO 页面
 ├─ scottish-surnames/page.tsx  # 苏格兰姓氏 SEO 页面
 ├─ about/page.tsx              # About 页面
@@ -89,6 +92,7 @@ components/
 └─ SiteFooter.tsx              # 页脚和信任页面链接
 data/
 ├─ american-surnames.json      # 1,000 个生产姓氏数据
+├─ australian-surnames.json    # 4,991 个生产姓氏数据
 ├─ japanese-surnames.json      # 1,999 个“罗马字 + 假名 + 汉字”生产数据
 ├─ scottish-surnames.json      # 3,672 个生产姓氏数据
 ├─ surnames.ts                 # 分类注册表
@@ -111,11 +115,13 @@ SurnameGenerator 客户端组件
 随机结果、复制和 localStorage 收藏
 ```
 
-原始 Census、National Records of Scotland Excel 文件和日本姓氏 CSV 保存在
-`data/sources/`，用于数据追溯。生产页面使用对应的 JSON 数据文件。日本数据来自
-shuheilocale 的 Japanese Personal Name Dataset，采用 MIT License；版权和许可证
-通知也保存在来源目录。其估算人数没有注明统计日期或采集方法，因此页面不把该列
-描述为官方或当前人口统计。
+原始 Census、National Records of Scotland Excel 文件、日本姓氏 CSV，以及
+Australian 分类使用的 Wikidata SPARQL 查询和原始 CSV 保存在 `data/sources/`，
+用于数据追溯。生产页面使用对应的 JSON 数据文件。Australian 数据采用 CC0，
+是与 Wikidata 中澳大利亚公民记录相关的固定快照，不是人口普查或姓氏频率榜单。
+日本数据来自 shuheilocale 的 Japanese Personal Name Dataset，采用 MIT License；
+版权和许可证通知也保存在来源目录。其估算人数没有注明统计日期或采集方法，因此
+页面不把该列描述为官方或当前人口统计。
 
 ## 本地运行
 

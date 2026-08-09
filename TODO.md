@@ -1,6 +1,6 @@
 # Project TODO
 
-Last reviewed: August 8, 2026
+Last reviewed: August 9, 2026
 
 This file reflects the current repository state. Completed items are confirmed
 by the existing code. Unchecked items describe known gaps or next actions based
@@ -12,16 +12,20 @@ already started.
 - [x] Create the project with Next.js 16 App Router, React 19, TypeScript strict
   mode, Tailwind CSS 4, and ESLint.
 - [x] Add a shared site layout with a global header and footer.
-- [x] Link the American, Scottish, and Japanese category pages from the
+- [x] Link the American, Australian, Scottish, and Japanese category pages from the
   responsive global header navigation.
 - [x] Build the homepage at `/` with the primary surname generator and an
   internal link to the current category page.
 - [x] Add the American surname SEO page at `/american-surnames`.
+- [x] Add the Australian surname SEO page at `/australian-surnames`.
 - [x] Add the Scottish surname SEO page at `/scottish-surnames`.
 - [x] Add the Japanese surname SEO page at `/japanese-surnames`.
 - [x] Import 1,000 unique, nonblank American surname strings into
   `data/american-surnames.json`.
 - [x] Preserve the original Census spreadsheet in `data/sources/`.
+- [x] Import 4,991 unique, nonblank Australian-connected surname strings from
+  Wikidata and preserve the CC0 query, raw CSV, and provenance note in
+  `data/sources/`.
 - [x] Import 3,672 unique, nonblank Scottish surname strings and preserve the
   original National Records of Scotland workbook in `data/sources/`.
 - [x] Import 1,999 unique, nonblank Japanese surname values pairing romanized

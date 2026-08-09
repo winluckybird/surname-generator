@@ -4,6 +4,24 @@ This file records notable project changes. Entries must describe changes that
 actually exist in the repository and must not claim backend, database, SEO, or
 application work that was not performed.
 
+## 2026-08-09
+
+### Added
+
+- Added 4,991 unique family-name labels connected to people recorded with
+  Australian citizenship in Wikidata, together with the CC0 source query, raw
+  CSV snapshot, and provenance note.
+- Added the `/australian-surnames` generator and SEO page with unique metadata,
+  visible dataset limitations, a breadcrumb, homepage discovery, and automatic
+  sitemap inclusion through the category registry.
+
+### Changed
+
+- Added Australian to the shared responsive header and changed the homepage
+  category grid to a balanced four-column desktop layout.
+- Updated project and SEO documentation to describe the fourth generator and
+  distinguish the Wikidata snapshot from a population-frequency ranking.
+
 ## 2026-08-08
 
 ### Added

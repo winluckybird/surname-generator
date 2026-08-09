@@ -42,6 +42,21 @@ position 数据调整优先级。
 | Secondary | `common American surnames` |
 | Secondary | `American surnames for characters` |
 
+### Australian 页面 `/australian-surnames`
+
+主要搜索意图：寻找具有澳大利亚人物记录关联的姓氏灵感或 Australian surname 生成工具。
+
+| 类型 | 目标关键词 |
+| --- | --- |
+| Primary | `Australian surname generator` |
+| Primary variant | `Australian last name generator` |
+| Primary variant | `random Australian last names` |
+| Secondary | `Australian surnames for characters` |
+
+当前 CC0 数据是 Wikidata 中明确包含澳大利亚公民身份和 family-name 字段的人物记录
+快照，不是人口普查或姓氏频率榜单，因此不定位 `most common Australian surnames`、
+`official Australian surname ranking` 等无法支持的意图。
+
 ### Scottish 页面 `/scottish-surnames`
 
 主要搜索意图：寻找记录在苏格兰的姓氏或 Scottish surname 生成工具。
@@ -104,8 +119,9 @@ Search 不使用该标签进行索引或排名。
 
 | 页面 | 当前 SEO 状态 | 已完成 | 主要缺口 |
 | --- | --- | --- | --- |
-| `/` | 基础完成 | 默认 title、description、canonical、H1、American、Scottish 与 Japanese 分类内链 | 内容深度有限；没有 Schema |
+| `/` | 基础完成 | 默认 title、description、canonical、H1、American、Australian、Scottish 与 Japanese 分类内链 | 内容深度有限；没有 Schema |
 | `/american-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、可见静态内容 | 内容深度有限；没有 Schema |
+| `/australian-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、数据范围与限制说明、可见静态内容 | 没有 Schema |
 | `/scottish-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、可见静态内容 | 内容深度有限；没有 Schema |
 | `/japanese-surnames` | 基础较完整 | 独立 title、description、canonical、H1、breadcrumb、FAQ、数据来源与限制说明、可见静态内容 | 没有 Schema |
 | `/about` | 完成 | 独立 metadata、canonical、一个 H1、多个语义 section | 不需要主动扩展非品牌关键词 |
@@ -120,7 +136,7 @@ Search 不使用该标签进行索引或排名。
 - 根布局设置 `lang="en"`。
 - `metadataBase` 来自 `siteConfig.url`。
 - 首页和所有公开内容页面都有 canonical。
-- American、Scottish、Japanese 和 supporting pages 有独立 title 与 description。
+- American、Australian、Scottish、Japanese 和 supporting pages 有独立 title 与 description。
 - `/robots.txt` 允许公开抓取并声明 sitemap。
 - `/sitemap.xml` 包含首页、分类页和 supporting pages。
 - Header、主页分类卡片、breadcrumb 和 footer 提供可抓取内部链接。
@@ -149,6 +165,7 @@ Search 不使用该标签进行索引或排名。
 ```text
 /
 /american-surnames
+/australian-surnames
 /japanese-surnames
 /scottish-surnames
 /about
@@ -326,10 +343,11 @@ American description 准确且包含明确数据范围。首页 description 在�
 
 ### 当前内链
 
-- Header：品牌链接到首页，导航链接到 American、Scottish 和 Japanese 页面。
-- 首页：分类卡片链接到 `/american-surnames`、`/scottish-surnames` 和
-  `/japanese-surnames`。
+- Header：品牌链接到首页，导航链接到 American、Australian、Scottish 和 Japanese 页面。
+- 首页：分类卡片链接到 `/american-surnames`、`/australian-surnames`、
+  `/scottish-surnames` 和 `/japanese-surnames`。
 - American 页面：breadcrumb 链接回首页。
+- Australian 页面：breadcrumb 链接回首页。
 - Scottish 页面：breadcrumb 链接回首页。
 - Japanese 页面：breadcrumb 链接回首页。
 - Footer：链接到 About、Contact、Privacy 和 Terms。

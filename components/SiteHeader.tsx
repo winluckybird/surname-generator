@@ -20,6 +20,13 @@ export function SiteHeader() {
           </Link>
 
           <Link
+            href="/australian-surnames"
+            className="text-sm font-semibold text-slate-600 hover:text-blue-600"
+          >
+            Australian
+          </Link>
+
+          <Link
             href="/scottish-surnames"
             className="text-sm font-semibold text-slate-600 hover:text-blue-600"
           >
