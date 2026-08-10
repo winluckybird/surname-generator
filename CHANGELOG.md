@@ -4,6 +4,32 @@ This file records notable project changes. Entries must describe changes that
 actually exist in the repository and must not claim backend, database, SEO, or
 application work that was not performed.
 
+## 2026-08-10
+
+### Added
+
+- Added 1,000 unique French surnames ranked from INSEE's national 1891-2000
+  birth-record totals, together with the original archive and provenance note.
+- Added the `/french-surnames` generator and SEO page with unique metadata,
+  source attribution, historical coverage limitations, a breadcrumb, homepage
+  discovery, and automatic sitemap inclusion through the category registry.
+- Added 100 unique Italian surname ideas from the CC0 Popular Names by Country
+  Dataset, together with the original cross-country CSV, license, and
+  provenance note.
+- Added the `/italian-surnames` generator and SEO page with unique metadata,
+  visible dataset limitations, a breadcrumb, homepage discovery, and automatic
+  sitemap inclusion through the category registry.
+
+### Changed
+
+- Added French to the shared responsive header and expanded the homepage
+  category grid to six generator cards.
+- Added Italian to the shared responsive header and adjusted the homepage
+  category grid for five generator cards.
+- Updated project and SEO documentation to describe the Italian and French
+  generators and distinguish their source data from current population
+  registers.
+
 ## 2026-08-09
 
 ### Added

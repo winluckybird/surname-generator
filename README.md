@@ -1,6 +1,6 @@
 # Surname Generator
 
-一个面向英语用户的随机姓氏生成器网站。当前版本提供美国、澳大利亚、苏格兰和日本姓氏生成器，目标是逐步扩展到更多国家和文化分类，并为每个分类建立可被搜索引擎收录的独立页面。
+一个面向英语用户的随机姓氏生成器网站。当前版本提供美国、澳大利亚、法国、意大利、苏格兰和日本姓氏生成器，目标是逐步扩展到更多国家和文化分类，并为每个分类建立可被搜索引擎收录的独立页面。
 
 网站主要服务于作家、游戏玩家、角色创作者以及需要姓氏灵感的用户。分类标签用于组织数据，不代表某个姓氏可以证明真实人物的国籍、族裔、血统或家族历史。
 
@@ -8,9 +8,10 @@
 
 - 已完成可运行的多分类 MVP。
 - 当前数据包含 1,000 个唯一、非空的美国常见姓氏，4,991 个与 Wikidata
-  中澳大利亚公民记录相关的唯一、非空姓氏，3,672 个 1975–2025 年间记录在
-  苏格兰的唯一、非空姓氏，以及 1,999 个由罗马字、假名与汉字组成的唯一
-  日本姓氏条目。
+  中澳大利亚公民记录相关的唯一、非空姓氏，1,000 个从 INSEE 1891–2000 年
+  出生记录汇总中选取的唯一、非空法国姓氏，3,672 个 1975–2025 年间记录在
+  苏格兰的唯一、非空姓氏，100 个来自 CC0 来源快照的唯一、非空意大利姓氏，
+  以及 1,999 个由罗马字、假名与汉字组成的唯一日本姓氏条目。
 - 所有公开页面均可由 Next.js 静态预渲染。
 - 当前没有后端、数据库、账户系统、分析工具或广告代码。
 - 生成结果只保存在浏览器内存中；收藏按分类保存在浏览器
@@ -38,6 +39,8 @@
 - 首页：`/`
 - 美国姓氏独立页面：`/american-surnames`
 - 澳大利亚姓氏独立页面：`/australian-surnames`
+- 法国姓氏独立页面：`/french-surnames`
+- 意大利姓氏独立页面：`/italian-surnames`
 - 苏格兰姓氏独立页面：`/scottish-surnames`
 - 日本姓氏独立页面：`/japanese-surnames`
 - About：`/about`
@@ -76,6 +79,8 @@ app/
 ├─ page.tsx                    # 首页和主生成器入口
 ├─ american-surnames/page.tsx  # 美国姓氏 SEO 页面
 ├─ australian-surnames/page.tsx # 澳大利亚姓氏 SEO 页面
+├─ french-surnames/page.tsx    # 法国姓氏 SEO 页面
+├─ italian-surnames/page.tsx   # 意大利姓氏 SEO 页面
 ├─ japanese-surnames/page.tsx  # 日本姓氏 SEO 页面
 ├─ scottish-surnames/page.tsx  # 苏格兰姓氏 SEO 页面
 ├─ about/page.tsx              # About 页面
@@ -93,6 +98,8 @@ components/
 data/
 ├─ american-surnames.json      # 1,000 个生产姓氏数据
 ├─ australian-surnames.json    # 4,991 个生产姓氏数据
+├─ french-surnames.json        # 1,000 个生产姓氏数据
+├─ italian-surnames.json       # 100 个生产姓氏数据
 ├─ japanese-surnames.json      # 1,999 个“罗马字 + 假名 + 汉字”生产数据
 ├─ scottish-surnames.json      # 3,672 个生产姓氏数据
 ├─ surnames.ts                 # 分类注册表
@@ -119,6 +126,11 @@ SurnameGenerator 客户端组件
 Australian 分类使用的 Wikidata SPARQL 查询和原始 CSV 保存在 `data/sources/`，
 用于数据追溯。生产页面使用对应的 JSON 数据文件。Australian 数据采用 CC0，
 是与 Wikidata 中澳大利亚公民记录相关的固定快照，不是人口普查或姓氏频率榜单。
+French 数据来自 INSEE 的 `Fichier des noms` 全国文件；生产数据将 1891–2000 年
+各出生年代的记录数合并后选取前 1,000 个姓氏。仓库保留原始 TXT 压缩包和处理说明。
+它是历史出生记录汇总，不是当前法国居民的姓氏排名。
+Italian 数据来自 CC0 许可的 Popular Names by Country Dataset；仓库保留了原始
+跨国 CSV 和许可证，生产数据使用其中标记为 Italy 的 100 个唯一姓氏。
 日本数据来自 shuheilocale 的 Japanese Personal Name Dataset，采用 MIT License；
 版权和许可证通知也保存在来源目录。其估算人数没有注明统计日期或采集方法，因此
 页面不把该列描述为官方或当前人口统计。
@@ -307,7 +319,7 @@ git diff --check
 
 ## 当前限制与后续方向
 
-- 当前有 American Surnames、Scottish Surnames 和 Japanese Surnames 三个分类。
+- 当前有 American、Australian、French、Italian、Scottish 和 Japanese 六个姓氏分类。
 - 收藏只保存在当前浏览器，不能跨设备同步。
 - 没有数据库、后台、用户账户或跨设备同步。
 - 没有自动化测试框架。

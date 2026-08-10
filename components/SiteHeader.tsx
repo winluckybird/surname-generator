@@ -27,6 +27,20 @@ export function SiteHeader() {
           </Link>
 
           <Link
+            href="/french-surnames"
+            className="text-sm font-semibold text-slate-600 hover:text-blue-600"
+          >
+            French
+          </Link>
+
+          <Link
+            href="/italian-surnames"
+            className="text-sm font-semibold text-slate-600 hover:text-blue-600"
+          >
+            Italian
+          </Link>
+
+          <Link
             href="/scottish-surnames"
             className="text-sm font-semibold text-slate-600 hover:text-blue-600"
           >

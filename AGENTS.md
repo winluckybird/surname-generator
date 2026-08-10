@@ -90,6 +90,8 @@ app/
   page.tsx                   Homepage and primary generator entry point
   american-surnames/         American category SEO page
   australian-surnames/       Australian category SEO page
+  french-surnames/           French category SEO page
+  italian-surnames/          Italian category SEO page
   japanese-surnames/         Japanese category SEO page
   scottish-surnames/         Scottish category SEO page
   about/ contact/            Trust and contact pages
@@ -103,6 +105,8 @@ components/
 data/
   american-surnames.json     Current 1,000-name production dataset
   australian-surnames.json   Current 4,991-name production dataset
+  french-surnames.json       Current 1,000-name production dataset
+  italian-surnames.json      Current 100-name production dataset
   japanese-surnames.json     Current 1,999-entry production dataset
   scottish-surnames.json     Current 3,672-name production dataset
   surnames.ts                Category registry and route metadata
@@ -129,6 +133,14 @@ Never edit generated files in `.next/` or dependencies in `node_modules/`.
   English family-name labels from a CC0 Wikidata snapshot of people recorded
   with Australian citizenship and a structured family name. It is not a
   population register or frequency ranking.
+- `data/french-surnames.json` contains exactly 1,000 unique, nonblank surname
+  strings selected from INSEE's national surname file. The selection ranks
+  combined birth-decade counts from 1891 to 2000; it is historical data rather
+  than a current resident-population ranking.
+- `data/italian-surnames.json` contains exactly 100 unique, nonblank surname
+  strings labeled for Italy in the CC0 Popular Names by Country Dataset. The
+  source snapshot was assembled from public surname lists in July 2023 and is
+  not an official population register or complete list of Italian surnames.
 - `data/japanese-surnames.json` contains exactly 1,999 unique, nonblank values
   pairing a Hepburn-style romanized Japanese surname spelling with kana and
   kanji. It is derived from shuheilocale's MIT-licensed Japanese Personal Name

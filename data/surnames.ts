@@ -1,5 +1,7 @@
 import americanSurnames from "./american-surnames.json";
 import australianSurnames from "./australian-surnames.json";
+import frenchSurnames from "./french-surnames.json";
+import italianSurnames from "./italian-surnames.json";
 import japaneseSurnames from "./japanese-surnames.json";
 import scottishSurnames from "./scottish-surnames.json";
 
@@ -16,6 +18,19 @@ export const surnameCategories = {
     description:
       "Family names connected to people recorded as Australian citizens.",
     surnames: australianSurnames,
+  },
+  french: {
+    name: "French",
+    slug: "french-surnames",
+    description:
+      "Frequently occurring surnames recorded in France from 1891 to 2000.",
+    surnames: frenchSurnames,
+  },
+  italian: {
+    name: "Italian",
+    slug: "italian-surnames",
+    description: "Common surname ideas associated with Italy.",
+    surnames: italianSurnames,
   },
   japanese: {
     name: "Japanese",
